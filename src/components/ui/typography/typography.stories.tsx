@@ -7,7 +7,7 @@ const meta = {
   tags: ['autodocs'],
   args: {
     variant: 'h1',
-    color: 'dark',
+    color: 'light',
     text: 'Carosserie Test Zürich Stauffacherstrasse 31 8004 Zürich, ZH, CH',
   },
 } satisfies Meta<typeof Typography>
