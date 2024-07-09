@@ -1,14 +1,6 @@
 @import '../../../styles/colors';
 @import '../../../styles/typography';
 
-.light {
-  color: var(--color-light-100);
-}
-
-.dark {
-  color: var(--color-dark-900);
-}
-
 .h1 {
   font-size: var(--font-size-xxl);
   font-weight: var(--font-weight-bold);

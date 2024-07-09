@@ -5,18 +5,16 @@ const meta = {
   title: 'Components/Input',
   component: Input,
   tags: ['autodocs'],
-  argTypes: {
-    type: {
-      options: ['textfield', 'password', 'search'],
-    },
-  },
 } satisfies Meta<typeof Input>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Primary: Story = {
+export const InputExample: Story = {
   args: {
-    type: 'password',
+    disabled: true,
+    placeholder: 'zenow',
+    value: 'zenow',
+    error: '',
   },
 }

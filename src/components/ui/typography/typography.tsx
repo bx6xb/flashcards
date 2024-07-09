@@ -1,3 +1,4 @@
+import { ComponentPropsWithoutRef } from 'react'
 import s from './typography.module.scss'
 
 type TypographyProps = {
@@ -14,9 +15,9 @@ type TypographyProps = {
     | 'overline'
     | 'link-1'
     | 'link-2'
-  color: 'light' | 'dark'
+  color?: 'light' | 'dark' | string
   text: string
-}
+} & ComponentPropsWithoutRef<'h1' | 'h2' | 'h3' | 'h4' | 'h6' | 'p' | 'span' | 'a'>
 
 const Tags = {
   h1: 'h1',
@@ -35,9 +36,22 @@ const Tags = {
   [key: string]: keyof HTMLElementTagNameMap
 }
 
-export const Typography = (props: TypographyProps) => {
-  const { variant, color = 'light', text } = props
+export const Typography = ({ variant, color = 'light', text, className }: TypographyProps) => {
   const TagName = Tags[variant]
 
-  return <TagName className={s[variant] + ' ' + s[color]}>{text}</TagName>
+  return (
+    <TagName
+      style={{
+        color:
+          color === 'light'
+            ? 'var(--color-light-100)'
+            : color === 'dark'
+            ? 'var(--color-dark-900)'
+            : color,
+      }}
+      className={`${s[variant]} ${className ? className : ''}`}
+    >
+      {text}
+    </TagName>
+  )
 }

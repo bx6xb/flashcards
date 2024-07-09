@@ -1,5 +1,6 @@
 import { ComponentPropsWithoutRef, ElementType } from 'react'
 import s from './button.module.scss'
+import { Typography } from '../typography'
 
 export type ButtonProps<T extends ElementType = 'button'> = {
   as?: T
@@ -14,6 +15,8 @@ export const Button = <T extends ElementType = 'button'>(props: ButtonProps<T>) 
     <Component
       className={`${s.button} ${s[variant]} ${fullWidth ? s.fullWidth : ''} ${className}`}
       {...rest}
-    />
+    >
+      <Typography text={rest.children} variant="subtitle-2" />
+    </Component>
   )
 }

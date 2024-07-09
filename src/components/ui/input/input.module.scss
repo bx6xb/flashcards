@@ -1,13 +1,24 @@
 @import '../../../styles/colors';
 
+@mixin default-input-styles {
+  background-color: transparent;
+  border: 1px solid var(--color-dark-300);
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 .input {
   width: 284px;
   height: 36px;
   padding: 0 12px;
 
-  background-color: transparent;
-  border: 1px solid var(--color-dark-300);
   border-radius: 2px;
+
+  @include default-input-styles;
+
   outline: none;
 
   &:placeholder-shown {
@@ -17,7 +28,38 @@
     line-height: var(--line-height-m);
   }
 
-  &:focus {
+  &:active {
     border: 1px solid var(--color-light-100);
+  }
+
+  &:focus {
+    outline: 2px solid var(--color-info-700);
+  }
+
+  &:hover {
+    background-color: var(--color-dark-700);
+    border: 1px solid var(--color-dark-100);
+  }
+
+  &:disabled {
+    color: var(--color-dark-300);
+  }
+
+  &:disabled:active,
+  &:disabled:focus,
+  &:disabled:hover {
+    @include default-input-styles;
+  }
+
+  &.error,
+  &.error:active,
+  &.error:focus,
+  &.error:hover {
+    color: var(--color-danger-300);
+    border: 1px solid var(--color-danger-300);
+
+    &:placeholder-shown {
+      color: var(--color-danger-300);
+    }
   }
 }
