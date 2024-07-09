@@ -24,7 +24,13 @@ export const Primary: Story = {
     disabled: false,
   },
 }
-
+export const PrimaryDisabled: Story = {
+  args: {
+    variant: 'primary',
+    children: 'Primary Button',
+    disabled: true,
+  },
+}
 export const Secondary: Story = {
   args: {
     variant: 'secondary',
@@ -32,7 +38,13 @@ export const Secondary: Story = {
     disabled: false,
   },
 }
-
+export const SecondaryDisabled: Story = {
+  args: {
+    variant: 'secondary',
+    children: 'Secondary Button',
+    disabled: true,
+  },
+}
 export const FullWidth: Story = {
   args: {
     variant: 'primary',
@@ -41,7 +53,6 @@ export const FullWidth: Story = {
     fullWidth: true,
   },
 }
-
 export const AsLink: Story = {
   args: {
     variant: 'primary',

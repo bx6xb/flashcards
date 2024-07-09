@@ -35,7 +35,9 @@ const Tags = {
   [key: string]: keyof HTMLElementTagNameMap
 }
 
-export const Typography = ({ variant, color = 'light', text }: TypographyProps) => {
+export const Typography = (props: TypographyProps) => {
+  const { variant, color = 'light', text } = props
   const TagName = Tags[variant]
+
   return <TagName className={s[variant] + ' ' + s[color]}>{text}</TagName>
 }
