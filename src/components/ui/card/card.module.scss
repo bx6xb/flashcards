@@ -1,0 +1,11 @@
+@import '../../../styles/colors';
+
+.card {
+  width: 420px;
+  height: 552px;
+  padding: 5px;
+
+  background-color: var(--color-dark-700);
+  border: 1px solid #313131;
+  border-radius: 1px;
+}
