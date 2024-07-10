@@ -6,7 +6,7 @@ import { Icon } from '../icon'
 type InputProps = {
   label?: string
   icon?: {
-    iconId: 'eye' | 'search' | string
+    iconId: string
     side: 'left' | 'right'
   } & ComponentPropsWithoutRef<'button'>
   error?: string
@@ -20,24 +20,28 @@ export const Input = (props: InputProps) => {
       {!!label && <Typography variant="body-2" color="var(--color-dark-100)" text={label} />}
       <div>
         <input
-          className={`${s.input} ${s.password} ${error ? s.error : ''} ${
+          className={`${s.input} ${error ? s.error : ''} ${
             icon?.side === 'left' ? s.inputPaddingOnLeftSide : s.inputPaddingOnRightSide
           }`}
           disabled={disabled}
           {...rest}
         />
 
-        {icon && (
-          <button
-            className={`${s.inputBtn} ${
-              icon.side === 'left' ? s.iconOnLeftSide : s.iconOnRightSide
-            }`}
-            disabled={disabled}
-            {...icon}
-          >
-            <Icon id={icon.iconId} width={20} height={20} />
-          </button>
-        )}
+        {icon &&
+          (function () {
+            const { iconId, side, ...restIconProps } = icon
+            return (
+              <button
+                className={`${s.inputBtn} ${
+                  side === 'left' ? s.iconOnLeftSide : s.iconOnRightSide
+                }`}
+                disabled={disabled}
+                {...restIconProps}
+              >
+                <Icon id={iconId} width={20} height={20} viewBox="0 0 22 22" />
+              </button>
+            )
+          })()}
       </div>
 
       {!!error && <Typography variant="caption" color="var(--color-danger-300)" text={error} />}

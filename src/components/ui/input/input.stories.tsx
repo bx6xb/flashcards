@@ -9,6 +9,7 @@ const meta = {
   args: {
     placeholder: 'Input placeholder',
     value: '',
+    onChange: () => {},
     disabled: false,
     error: '',
     icon: {
@@ -41,7 +42,7 @@ export const PasswordInput: Story = {
         placeholder="Password"
         type={showPassword ? 'text' : 'password'}
         icon={{
-          iconId: 'eye',
+          iconId: 'eye-outline',
           side: 'right',
           onMouseDown: showPasswordHandler,
           onMouseUp: hidePasswordHandler,
