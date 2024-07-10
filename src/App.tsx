@@ -9,7 +9,7 @@ export function App() {
       </Button>
       <Button variant="primary">Hello</Button>
       <div style={{ padding: '100px' }}>
-        <Input type="password" />
+        <Input type="password" icon={{ iconId: 'eye', side: 'right' }} />
       </div>
     </div>
   )

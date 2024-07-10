@@ -5,46 +5,14 @@
   border: 1px solid var(--color-dark-300);
 }
 
-@mixin input-icon {
-  cursor: pointer;
-
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-
-  display: inline;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background-color: transparent;
-  border: none;
-
-  &:disabled {
-    opacity: 0.3;
-  }
-}
-
 .inputRoot {
   position: relative;
   display: inline-flex;
   flex-direction: column;
-}
 
-.inputWrapper {
-  position: relative;
-}
-
-.showPasswordBtn {
-  @include input-icon;
-
-  right: 14px;
-}
-
-.searchBtn {
-  @include input-icon;
-
-  left: 14px;
+  & > div {
+    position: inherit;
+  }
 }
 
 .input {
@@ -57,12 +25,20 @@
 
   @include default-input-styles;
 
-  &.password {
+  &.inputPaddingOnLeftSide {
+    padding: 0 12px 0 43px;
+  }
+
+  &.inputPaddingOnRightSide {
     padding: 0 43px 0 12px;
   }
 
-  &.search {
-    padding: 0 12px 0 40px;
+  &.error,
+  &.error:active,
+  &.error:focus,
+  &.error:hover {
+    color: var(--color-danger-300);
+    border: 1px solid var(--color-danger-300);
   }
 
   &:placeholder-shown {
@@ -94,12 +70,32 @@
   &:disabled:hover {
     @include default-input-styles;
   }
+}
 
-  &.error,
-  &.error:active,
-  &.error:focus,
-  &.error:hover {
-    color: var(--color-danger-300);
-    border: 1px solid var(--color-danger-300);
+.inputBtn {
+  cursor: pointer;
+
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  display: inline;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: transparent;
+  border: none;
+
+  &.iconOnLeftSide {
+    left: 14px;
+  }
+
+  &.iconOnRightSide {
+    right: 14px;
+  }
+
+  &:disabled {
+    opacity: 0.3;
   }
 }
