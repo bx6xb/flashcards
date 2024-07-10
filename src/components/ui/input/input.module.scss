@@ -5,9 +5,46 @@
   border: 1px solid var(--color-dark-300);
 }
 
-.inputWrapper {
+@mixin input-icon {
+  cursor: pointer;
+
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  display: inline;
   display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: transparent;
+  border: none;
+
+  &:disabled {
+    opacity: 0.3;
+  }
+}
+
+.inputRoot {
+  position: relative;
+  display: inline-flex;
   flex-direction: column;
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.showPasswordBtn {
+  @include input-icon;
+
+  right: 14px;
+}
+
+.searchBtn {
+  @include input-icon;
+
+  left: 14px;
 }
 
 .input {
@@ -16,10 +53,17 @@
   padding: 0 12px;
 
   border-radius: 2px;
+  outline: none;
 
   @include default-input-styles;
 
-  outline: none;
+  &.password {
+    padding: 0 43px 0 12px;
+  }
+
+  &.search {
+    padding: 0 12px 0 40px;
+  }
 
   &:placeholder-shown {
     font-family: var(--font-family-primary);
@@ -57,9 +101,5 @@
   &.error:hover {
     color: var(--color-danger-300);
     border: 1px solid var(--color-danger-300);
-
-    &:placeholder-shown {
-      color: var(--color-danger-300);
-    }
   }
 }

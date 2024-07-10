@@ -16,5 +16,6 @@ export const InputExample: Story = {
     placeholder: 'zenow',
     value: 'zenow',
     error: '',
+    type: 'password',
   },
 }
