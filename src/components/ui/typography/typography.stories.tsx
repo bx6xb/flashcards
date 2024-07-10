@@ -6,7 +6,6 @@ const meta = {
   component: Typography,
   tags: ['autodocs'],
   args: {
-    variant: 'h1',
     color: 'light',
     text: 'Carosserie Test Zürich Stauffacherstrasse 31 8004 Zürich, ZH, CH',
   },
@@ -35,42 +34,42 @@ export const H4: Story = {
     variant: 'h4',
   },
 }
-export const body1: Story = {
+export const Body1: Story = {
   args: {
     variant: 'body-1',
   },
 }
-export const body2: Story = {
+export const Body2: Story = {
   args: {
     variant: 'body-2',
   },
 }
-export const subtitle1: Story = {
+export const Subtitle1: Story = {
   args: {
     variant: 'subtitle-1',
   },
 }
-export const subtitle2: Story = {
+export const Subtitle2: Story = {
   args: {
     variant: 'subtitle-2',
   },
 }
-export const caption: Story = {
+export const Caption: Story = {
   args: {
     variant: 'caption',
   },
 }
-export const overline: Story = {
+export const Overline: Story = {
   args: {
     variant: 'overline',
   },
 }
-export const link1: Story = {
+export const Link1: Story = {
   args: {
     variant: 'link-1',
   },
 }
-export const link2: Story = {
+export const Link2: Story = {
   args: {
     variant: 'link-2',
   },
