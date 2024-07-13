@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef } from 'react'
 import s from './typography.module.scss'
 
-type TypographyProps = {
+export type TypographyProps = {
   variant:
     | 'h1'
     | 'h2'
