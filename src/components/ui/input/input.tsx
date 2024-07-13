@@ -1,9 +1,9 @@
-import { ComponentPropsWithoutRef } from 'react'
+import { ComponentPropsWithoutRef, forwardRef } from 'react'
 import s from './input.module.scss'
 import { Typography } from '../typography'
 import { Icon } from '../icon'
 
-type InputProps = {
+export type InputProps = {
   label?: string
   icon?: {
     iconId: string
@@ -12,7 +12,7 @@ type InputProps = {
   error?: string
 } & ComponentPropsWithoutRef<'input'>
 
-export const Input = (props: InputProps) => {
+export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const { label, icon, error, disabled, ...rest } = props
 
   return (
@@ -24,6 +24,7 @@ export const Input = (props: InputProps) => {
             icon?.side === 'left' ? s.inputPaddingOnLeftSide : s.inputPaddingOnRightSide
           }`}
           disabled={disabled}
+          ref={ref}
           {...rest}
         />
 
@@ -47,4 +48,4 @@ export const Input = (props: InputProps) => {
       {!!error && <Typography variant="caption" color="var(--color-danger-300)" text={error} />}
     </div>
   )
-}
+})

@@ -4,16 +4,18 @@ import { ComponentPropsWithoutRef, useId } from 'react'
 import { CheckIcon } from '@radix-ui/react-icons'
 import { Typography } from '../typography'
 
-type CheckboxProps = {
+export type CheckboxProps = {
   label?: string
-} & ComponentPropsWithoutRef<'input'>
+} & ComponentPropsWithoutRef<typeof CheckboxRadix.Root>
 
-export const Checkbox = ({ label, disabled, checked }: CheckboxProps) => {
+export const Checkbox = (props: CheckboxProps) => {
+  const { label, ...rest } = props
+
   const id = useId()
 
   return (
     <div className={s.checkboxWrapper}>
-      <CheckboxRadix.Root className={s.checkboxRoot} disabled={disabled} checked={checked} id={id}>
+      <CheckboxRadix.Root className={s.checkboxRoot} id={id} {...rest}>
         <CheckboxRadix.Indicator>
           <CheckIcon className={s.checkboxIcon} />
         </CheckboxRadix.Indicator>
