@@ -8,9 +8,7 @@ export function App() {
         Hello
       </Button>
       <Button variant="primary">Hello</Button>
-      <div style={{ padding: '100px' }}>
-        <Input type="password" icon={{ iconId: 'eye', side: 'right' }} />
-      </div>
+      <Input type="password" icon={{ iconId: 'eye', side: 'right' }} />
     </div>
   )
 }

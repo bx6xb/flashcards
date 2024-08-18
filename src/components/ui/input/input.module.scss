@@ -13,6 +13,11 @@
   }
 }
 
+.inputWrapper {
+  width: 284px;
+  position: inherit;
+}
+
 input {
   width: 284px;
   height: 36px;
@@ -71,8 +76,6 @@ input {
 }
 
 .inputBtn {
-  cursor: pointer;
-
   position: absolute;
   top: 50%;
   transform: translateY(-50%);

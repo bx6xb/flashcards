@@ -18,14 +18,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   return (
     <div className={s.inputRoot}>
       {!!label && <Typography variant="body-2" color="var(--color-dark-100)" text={label} />}
-      <div>
+      <div className={s.inputWrapper}>
         <input
           className={`${s.input} ${className || ''} ${error ? s.error : ''} ${
             icon?.side === 'left'
               ? s.inputPaddingOnLeftSide
               : icon?.side === 'right'
-                ? s.inputPaddingOnRightSide
-                : ''
+              ? s.inputPaddingOnRightSide
+              : ''
           }`}
           disabled={disabled}
           ref={ref}
