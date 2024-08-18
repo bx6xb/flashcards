@@ -13,15 +13,19 @@ export type InputProps = {
 } & ComponentPropsWithoutRef<'input'>
 
 export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  const { label, icon, error, disabled, ...rest } = props
+  const { label, icon, error, disabled, className, ...rest } = props
 
   return (
     <div className={s.inputRoot}>
       {!!label && <Typography variant="body-2" color="var(--color-dark-100)" text={label} />}
       <div>
         <input
-          className={`${s.input} ${error ? s.error : ''} ${
-            icon?.side === 'left' ? s.inputPaddingOnLeftSide : s.inputPaddingOnRightSide
+          className={`${s.input} ${className || ''} ${error ? s.error : ''} ${
+            icon?.side === 'left'
+              ? s.inputPaddingOnLeftSide
+              : icon?.side === 'right'
+                ? s.inputPaddingOnRightSide
+                : ''
           }`}
           disabled={disabled}
           ref={ref}

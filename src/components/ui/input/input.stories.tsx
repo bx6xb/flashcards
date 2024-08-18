@@ -25,10 +25,27 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+// hook
+function useValueAndSubmit() {
+  const [value, setValue] = useState('')
+
+  const submit = () => {
+    alert(value)
+    setValue('')
+  }
+
+  return {
+    value,
+    setValue,
+    submit,
+  }
+}
+
+// stories
 export const InputBaseExample: Story = {}
 export const PasswordInput: Story = {
   render() {
-    const [value, setValue] = useState('')
+    const { value, setValue } = useValueAndSubmit()
     const [showPassword, setShowPassword] = useState(false)
 
     const showPasswordHandler = () => setShowPassword(true)
@@ -53,27 +70,35 @@ export const PasswordInput: Story = {
 }
 export const SearchInput: Story = {
   render() {
-    const [value, setValue] = useState('')
-
-    const submit = () => {
-      alert(value)
-      setValue('')
-    }
+    const { value, setValue, submit } = useValueAndSubmit()
 
     return (
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <Input
-          value={value}
-          onChange={e => setValue(e.currentTarget.value)}
-          placeholder="Search"
-          onKeyDown={e => e.key === 'Enter' && submit()}
-          icon={{
-            iconId: 'search',
-            side: 'left',
-            onClick: submit,
-          }}
-        />
-      </div>
+      <Input
+        value={value}
+        onChange={e => setValue(e.currentTarget.value)}
+        placeholder="Search"
+        onKeyDown={e => e.key === 'Enter' && submit()}
+        icon={{
+          iconId: 'search',
+          side: 'left',
+          onClick: submit,
+        }}
+      />
+    )
+  },
+}
+export const ErrorInput: Story = {
+  render() {
+    const { value, setValue, submit } = useValueAndSubmit()
+
+    return (
+      <Input
+        value={value}
+        onChange={e => setValue(e.currentTarget.value)}
+        placeholder="Error"
+        onKeyDown={e => e.key === 'Enter' && submit()}
+        error="Invalid value"
+      />
     )
   },
 }
