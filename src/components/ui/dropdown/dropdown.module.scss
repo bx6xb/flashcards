@@ -1,0 +1,108 @@
+@mixin triangle {
+  content: '';
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+button {
+  all: unset;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  background-color: var(--color-dark-700);
+  border: 1px solid var(--color-dark-500);
+  border-radius: 6px;
+  position: relative;
+  z-index: 1;
+
+  &[data-side='top'] {
+    animation-name: slideDownAndFade;
+  }
+  &[data-side='right'] {
+    animation-name: slideLeftAndFade;
+  }
+  &[data-side='bottom'] {
+    animation-name: slideUpAndFade;
+  }
+  &[data-side='left'] {
+    animation-name: slideRightAndFade;
+  }
+  &::before {
+    @include triangle;
+    border-width: 0 8px 8px 8px;
+    border-color: transparent transparent var(--color-dark-700) transparent;
+    top: -8px;
+    z-index: 2;
+  }
+  &::after {
+    @include triangle;
+    border-width: 0 9px 9px 9px;
+    border-color: transparent transparent var(--color-dark-500) transparent;
+    top: -9px;
+  }
+}
+
+.item {
+  cursor: pointer;
+  &[data-disabled] {
+    opacity: 0.5;
+  }
+}
+
+.separator {
+  width: 90%;
+  height: 1px;
+  background-color: var(--color-dark-500);
+}
+
+@keyframes slideUpAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideRightAndFade {
+  from {
+    opacity: 0;
+    transform: translateX(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideDownAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideLeftAndFade {
+  from {
+    opacity: 0;
+    transform: translateX(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

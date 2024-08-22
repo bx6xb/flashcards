@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, forwardRef } from 'react'
+import { ComponentPropsWithoutRef, forwardRef, ReactNode } from 'react'
 import s from './input.module.scss'
 import { Typography } from '../typography'
 import { Icon } from '../icon'
@@ -14,6 +14,21 @@ export type InputProps = {
 
 export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const { label, icon, error, disabled, className, ...rest } = props
+
+  let iconButton: ReactNode
+
+  if (icon) {
+    const { iconId, side, ...restIconProps } = icon
+    iconButton = (
+      <button
+        className={`${s.inputBtn} ${side === 'left' ? s.iconOnLeftSide : s.iconOnRightSide}`}
+        disabled={disabled}
+        {...restIconProps}
+      >
+        <Icon id={iconId} width={20} height={20} viewBox="0 0 22 22" />
+      </button>
+    )
+  }
 
   return (
     <div className={s.inputRoot}>
@@ -32,21 +47,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
           {...rest}
         />
 
-        {icon &&
-          (function () {
-            const { iconId, side, ...restIconProps } = icon
-            return (
-              <button
-                className={`${s.inputBtn} ${
-                  side === 'left' ? s.iconOnLeftSide : s.iconOnRightSide
-                }`}
-                disabled={disabled}
-                {...restIconProps}
-              >
-                <Icon id={iconId} width={20} height={20} viewBox="0 0 22 22" />
-              </button>
-            )
-          })()}
+        {iconButton}
       </div>
 
       {!!error && <Typography variant="caption" color="var(--color-danger-300)" text={error} />}
