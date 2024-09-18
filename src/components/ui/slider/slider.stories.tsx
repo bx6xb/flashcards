@@ -15,6 +15,8 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+// stories
+
 export const SliderExample: Story = {
   render(args) {
     const [value, setValue] = useState<SliderValue>(args.value)

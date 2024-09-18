@@ -16,6 +16,8 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+// stories
+
 export const CheckboxExample: Story = {
   args: {
     label: 'Label for checkbox',

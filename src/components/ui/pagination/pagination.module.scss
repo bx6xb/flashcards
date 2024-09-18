@@ -1,0 +1,46 @@
+@mixin centeredContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  .arrows {
+    width: 16px;
+    height: 16px;
+    @include centeredContent;
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+  }
+
+  .contentItem {
+    @include centeredContent;
+    width: 24px;
+    height: 24px;
+    border-radius: 3px;
+    font-size: var(--font-size-s);
+    transition: 0.2s;
+  }
+
+  .selected {
+    background-color: var(--color-light-100);
+    color: var(--color-dark-900);
+  }
+
+  .portion {
+    display: flex;
+    gap: 6px;
+    margin-left: 12px;
+
+    select {
+      color: black;
+    }
+  }
+}

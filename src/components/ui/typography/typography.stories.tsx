@@ -14,6 +14,8 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+// stories
+
 export const H1: Story = {
   args: {
     variant: 'h1',
