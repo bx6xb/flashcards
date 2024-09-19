@@ -1,4 +1,4 @@
-@mixin centeredContent {
+@mixin centered-content {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,7 +12,7 @@
   .arrows {
     width: 16px;
     height: 16px;
-    @include centeredContent;
+    @include centered-content;
 
     &:disabled {
       opacity: 0.3;
@@ -21,7 +21,7 @@
   }
 
   .contentItem {
-    @include centeredContent;
+    @include centered-content;
     width: 24px;
     height: 24px;
     border-radius: 3px;
