@@ -25,7 +25,7 @@
 }
 
 .sliderTrack {
-  background-color: rgba(var(--color-accent-500-rgb), 0.5);
+  background-color: rgba(from var(--color-accent-500) r g b / 0.5);
   position: relative;
   flex-grow: 1;
   border-radius: 10px;
