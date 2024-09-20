@@ -26,6 +26,14 @@
   align-items: center;
   justify-content: space-between;
 
+  svg {
+    transition: 0.2s;
+  }
+
+  &[data-state='open'] svg {
+    transform: scaleY(-1);
+  }
+
   &:hover {
     background-color: var(--color-dark-100);
   }
