@@ -1,0 +1,69 @@
+@mixin circle-bg($action, $color) {
+  &:#{$action}::before {
+    background-color: $color;
+    opacity: 1;
+  }
+}
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.radio {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: var(--font-size-s);
+
+  &[data-disabled='true'] {
+    opacity: 0.5;
+
+    & > * {
+      cursor: default;
+    }
+  }
+}
+
+.item {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--color-accent-500);
+  border-radius: 100%;
+  position: relative;
+
+  &::before {
+    content: '';
+    opacity: 0;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 36px;
+    height: 36px;
+    border-radius: 100%;
+    transition: 0.2s;
+    z-index: -1;
+  }
+
+  @include circle-bg(hover, var(--color-dark-500));
+  @include circle-bg(active, var(--color-accent-900));
+  @include circle-bg(focus, var(--color-dark-700));
+}
+
+.indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    background-color: var(--color-accent-500);
+  }
+}
