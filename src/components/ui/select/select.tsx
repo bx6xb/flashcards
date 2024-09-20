@@ -9,10 +9,9 @@ export type SelectProps = {
   label?: string
   className?: string
   triggerStyleId?: string
-  itemStyleId?: string
 } & ComponentPropsWithoutRef<typeof SelectRadix.Root>
 
-type Item = { value: string; label?: string }
+type Item = { value: string; label?: string } & ComponentPropsWithoutRef<typeof SelectRadix.Item>
 
 export const Select = (props: SelectProps) => {
   const {
@@ -22,13 +21,12 @@ export const Select = (props: SelectProps) => {
     disabled,
     className = '',
     triggerStyleId = '',
-    itemStyleId = '',
     ...rest
   } = props
 
-  const mappedItems = items.map(i => (
-    <SelectRadix.Item id={itemStyleId} className={s.item} value={i.value} key={i.value}>
-      <SelectRadix.ItemText>{i.label || i.value}</SelectRadix.ItemText>
+  const mappedItems = items.map(({ value, label, className = '', ...rest }) => (
+    <SelectRadix.Item className={`${s.item} ${className}`} value={value} key={value} {...rest}>
+      <SelectRadix.ItemText>{label || value}</SelectRadix.ItemText>
     </SelectRadix.Item>
   ))
 

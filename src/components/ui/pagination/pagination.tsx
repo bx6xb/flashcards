@@ -51,6 +51,13 @@ export const Pagination = (props: PaginationProps) => {
   const isLeftArrowDisabled = currentPage - 3 < 1
   const isRightArrowDisabled = currentPage + 3 > lastPage
 
+  function createItems(...values: string[]) {
+    return values.map(value => ({
+      value,
+      className: s.item,
+    }))
+  }
+
   return (
     <div className={s.pagination}>
       <button
@@ -75,26 +82,9 @@ export const Pagination = (props: PaginationProps) => {
         Показать
         <Select
           placeholder={portion.toString()}
-          items={[
-            {
-              value: '10',
-            },
-            {
-              value: '20',
-            },
-            {
-              value: '30',
-            },
-            {
-              value: '50',
-            },
-            {
-              value: '100',
-            },
-          ]}
+          items={createItems('10', '20', '30', '50', '100')}
           onValueChange={portionOnChangeHandler}
           triggerStyleId={s.trigger}
-          itemStyleId={s.item}
         />
         на странице
       </div>
