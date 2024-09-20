@@ -4,19 +4,31 @@ import { Icon } from '../icon'
 import { ComponentPropsWithoutRef } from 'react'
 
 export type SelectProps = {
-  placeholder: string
+  placeholder: string | number
   items: Item[]
   label?: string
+  className?: string
+  triggerStyleId?: string
+  itemStyleId?: string
 } & ComponentPropsWithoutRef<typeof SelectRadix.Root>
 
-type Item = { value: string; label: string }
+type Item = { value: string; label?: string }
 
 export const Select = (props: SelectProps) => {
-  const { placeholder, items, label, disabled, ...rest } = props
+  const {
+    placeholder,
+    items,
+    label,
+    disabled,
+    className = '',
+    triggerStyleId = '',
+    itemStyleId = '',
+    ...rest
+  } = props
 
   const mappedItems = items.map(i => (
-    <SelectRadix.Item className={s.item} value={i.value} key={i.value}>
-      <SelectRadix.ItemText>{i.label}</SelectRadix.ItemText>
+    <SelectRadix.Item id={itemStyleId} className={s.item} value={i.value} key={i.value}>
+      <SelectRadix.ItemText>{i.label || i.value}</SelectRadix.ItemText>
     </SelectRadix.Item>
   ))
 
@@ -25,17 +37,13 @@ export const Select = (props: SelectProps) => {
       {label && <span className={`${s.label} ${disabled ? s.disabled : ''}`}>{label}</span>}
 
       <SelectRadix.Root disabled={disabled} {...rest}>
-        <SelectRadix.Trigger className={s.trigger} aria-label="Food">
+        <SelectRadix.Trigger
+          className={`${s.trigger} ${className}`}
+          id={triggerStyleId}
+          aria-label="Portion"
+        >
           <SelectRadix.Value placeholder={placeholder} />
-          <SelectRadix.Icon>
-            <Icon
-              className={s.icon}
-              id="arrow-ios-Down-outline"
-              width={16}
-              height={16}
-              viewBox="0 0 24 24"
-            />
-          </SelectRadix.Icon>
+          <Icon id="arrow-ios-Down-outline" width={16} height={16} viewBox="0 0 24 24" />
         </SelectRadix.Trigger>
 
         <SelectRadix.Portal>

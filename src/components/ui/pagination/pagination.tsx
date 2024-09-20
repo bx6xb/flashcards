@@ -1,6 +1,6 @@
-import { ChangeEvent } from 'react'
 import { Icon } from '../icon'
 import s from './pagination.module.scss'
+import { Select } from '../select'
 
 export type PaginationProps = {
   currentPage: number
@@ -15,8 +15,8 @@ export type Portion = 10 | 20 | 30 | 50 | 100
 export const Pagination = (props: PaginationProps) => {
   const { currentPage, portion, itemsCount, pageOnChange, portionOnChange } = props
 
-  const portionOnChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
-    portionOnChange(+e.currentTarget.value as Portion)
+  const portionOnChangeHandler = (portion: string) => {
+    portionOnChange(+portion as Portion)
   }
 
   const lastPage = Math.ceil(itemsCount / portion)
@@ -73,13 +73,29 @@ export const Pagination = (props: PaginationProps) => {
 
       <div className={s.portion}>
         Показать
-        <select onChange={portionOnChangeHandler} defaultValue={portion}>
-          <option value="10">10</option>
-          <option value="20">20</option>
-          <option value="30">30</option>
-          <option value="50">50</option>
-          <option value="100">100</option>
-        </select>
+        <Select
+          placeholder={portion.toString()}
+          items={[
+            {
+              value: '10',
+            },
+            {
+              value: '20',
+            },
+            {
+              value: '30',
+            },
+            {
+              value: '50',
+            },
+            {
+              value: '100',
+            },
+          ]}
+          onValueChange={portionOnChangeHandler}
+          triggerStyleId={s.trigger}
+          itemStyleId={s.item}
+        />
         на странице
       </div>
     </div>

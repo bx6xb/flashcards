@@ -36,11 +36,19 @@
 
   .portion {
     display: flex;
+    align-items: center;
     gap: 6px;
     margin-left: 12px;
-
-    select {
-      color: black;
-    }
   }
+}
+
+#trigger {
+  width: 50px;
+  height: 24px;
+  padding: 0 2px 0 6px;
+}
+
+#item {
+  width: 48px;
+  height: 24px;
 }

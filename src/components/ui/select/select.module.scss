@@ -22,13 +22,9 @@
   position: relative;
   box-sizing: border-box;
   transition: 0.2s;
-
-  .icon {
-    position: absolute;
-    top: 50%;
-    right: 12px;
-    transform: translateY(-50%);
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   &:hover {
     background-color: var(--color-dark-100);
@@ -56,12 +52,12 @@
   background-color: transparent;
   border: 1px solid var(--color-dark-300);
   border-radius: 0 0 2px 2px;
-  width: 210px;
   position: relative;
   top: -1px;
 }
 
 .item {
+  width: 208px;
   height: 36px;
   display: flex;
   align-items: center;
