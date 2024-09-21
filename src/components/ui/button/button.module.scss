@@ -53,7 +53,12 @@
     background-color: var(--color-dark-100);
   }
 
+  &:focus {
+    background-color: var(--color-dark-300);
+  }
+
   &:disabled {
+    background-color: var(--color-dark-300);
     color: var(--color-light-900);
   }
 }
