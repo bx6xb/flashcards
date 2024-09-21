@@ -85,7 +85,7 @@ export const SignIn = () => {
           Don't have an account?
         </a>
         <a href="#" className={s.signUp}>
-          Sign Up
+          Sign In
         </a>
       </form>
     </Card>
