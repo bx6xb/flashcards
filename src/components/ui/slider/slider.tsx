@@ -2,7 +2,6 @@ import * as SliderRadix from '@radix-ui/react-slider'
 import s from './slider.module.scss'
 import { ChangeEvent, ComponentPropsWithoutRef } from 'react'
 import { Input } from '../input'
-import { deleteFirstZero } from '@/utils/deleteFirstZero'
 
 export type SliderValue = [number] | [number, number]
 export type SliderProps = {
@@ -11,7 +10,7 @@ export type SliderProps = {
 } & ComponentPropsWithoutRef<typeof SliderRadix.Root>
 
 export const Slider = (props: SliderProps) => {
-  const { value, onValueChange, className, ...rest } = props
+  const { value, onValueChange, className = '', ...rest } = props
 
   const isLengthIs2 = value.length === 2
 
@@ -31,12 +30,12 @@ export const Slider = (props: SliderProps) => {
       <Input
         className={s.input}
         type="number"
-        value={deleteFirstZero(value[0])}
+        value={value[0].toString()}
         onChange={minValueOnChange}
       />
 
       <SliderRadix.Root
-        className={`${s.sliderRoot} ${className || ''}`}
+        className={`${s.sliderRoot} ${className}`}
         value={value}
         onValueChange={onValueChange}
         {...rest}
@@ -53,7 +52,7 @@ export const Slider = (props: SliderProps) => {
         <Input
           className={s.input}
           type="number"
-          value={deleteFirstZero(value[1])}
+          value={value[1].toString()}
           onChange={maxValueOnChange}
         />
       )}
