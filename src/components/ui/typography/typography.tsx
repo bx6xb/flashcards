@@ -46,8 +46,8 @@ export const Typography = ({ variant, color = 'light', text, className }: Typogr
           color === 'light'
             ? 'var(--color-light-100)'
             : color === 'dark'
-              ? 'var(--color-dark-900)'
-              : color,
+            ? 'var(--color-dark-900)'
+            : color,
       }}
       className={`${s[variant]} ${className ? className : ''}`}
     >

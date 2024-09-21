@@ -25,7 +25,7 @@ export const Button = <T extends ElementType = 'button'>(props: ButtonProps<T>) 
       }`}
       {...rest}
     >
-      <Typography text={children} variant="h1" />
+      <Typography text={children} variant="body-2" />
     </Component>
   )
 }

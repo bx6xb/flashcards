@@ -23,7 +23,6 @@ export const Primary: Story = {
   args: {
     variant: 'primary',
     children: 'Primary Button',
-    disabled: false,
   },
 }
 export const PrimaryDisabled: Story = {
@@ -37,7 +36,6 @@ export const Secondary: Story = {
   args: {
     variant: 'secondary',
     children: 'Secondary Button',
-    disabled: false,
   },
 }
 export const SecondaryDisabled: Story = {
@@ -51,7 +49,6 @@ export const FullWidth: Story = {
   args: {
     variant: 'primary',
     children: 'Full Width Primary Button',
-    disabled: false,
     fullWidth: true,
   },
 }

@@ -9,12 +9,12 @@ export type CheckboxProps = {
 } & ComponentPropsWithoutRef<typeof CheckboxRadix.Root>
 
 export const Checkbox = (props: CheckboxProps) => {
-  const { label, ...rest } = props
+  const { label, className = '', ...rest } = props
 
   const id = useId()
 
   return (
-    <div className={s.checkboxWrapper}>
+    <div className={`${s.checkboxWrapper} ${className}`}>
       <CheckboxRadix.Root className={s.checkboxRoot} id={id} {...rest}>
         <CheckboxRadix.Indicator>
           <CheckIcon className={s.checkboxIcon} />
