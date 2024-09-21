@@ -14,7 +14,7 @@
 }
 
 .inputWrapper {
-  position: inherit;
+  width: 284px;
 }
 
 input {
@@ -86,6 +86,7 @@ input {
 
   background-color: transparent;
   border: none;
+  cursor: pointer;
 
   &.iconOnLeftSide {
     left: 14px;
