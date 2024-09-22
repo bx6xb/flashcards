@@ -9,6 +9,10 @@
   flex-direction: column;
 }
 
+.label {
+  color: var(--color-dark-100);
+}
+
 .inputWrapper {
   width: 284px;
   position: inherit;
@@ -31,10 +35,10 @@
       padding: 0 43px 0 12px;
     }
 
-    &.error,
-    &.error:active,
-    &.error:focus,
-    &.error:hover {
+    &.inputError,
+    &.inputError:active,
+    &.inputError:focus,
+    &.inputError:hover {
       color: var(--color-danger-300);
       border: 1px solid var(--color-danger-300);
     }
@@ -96,4 +100,10 @@
   &:disabled {
     opacity: 0.3;
   }
+}
+
+.error {
+  color: var(--color-danger-300);
+  position: absolute;
+  bottom: -20px;
 }

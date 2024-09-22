@@ -32,11 +32,15 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 
   return (
     <div className={s.inputRoot}>
-      {!!label && <Typography variant="body-2" color="var(--color-dark-100)" text={label} />}
+      {!!label && (
+        <Typography variant="body-2" className={s.label}>
+          {label}
+        </Typography>
+      )}
 
       <div className={`${s.inputWrapper} ${className}`}>
         <input
-          className={`${error ? s.error : ''} ${
+          className={`${error ? s.inputError : ''} ${
             icon?.side === 'left'
               ? s.inputPaddingOnLeftSide
               : icon?.side === 'right'
@@ -51,7 +55,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
         {iconButton}
       </div>
 
-      {!!error && <Typography variant="caption" color="var(--color-danger-300)" text={error} />}
+      {!!error && (
+        <Typography variant="caption" className={s.error}>
+          {error}
+        </Typography>
+      )}
     </div>
   )
 })
