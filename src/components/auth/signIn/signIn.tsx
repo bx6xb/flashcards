@@ -4,11 +4,8 @@ import { ControlledCheckbox } from '@/components/ui/controlled/controlledCheckbo
 import { DevTool } from '@hookform/devtools'
 import { Card } from '@/components/ui/card'
 import s from './signIn.module.scss'
-import { useState } from 'react'
-import { ControlledInput } from '@/components/ui/controlled/controlledInput'
-
-const emailRegex =
-  /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/
+import { ControlledPasswordInput } from '@/components/ui/controlled/controlledPasswordInput'
+import { ControlledEmailInput } from '@/components/ui/controlled/controlledEmailInput'
 
 export type SignInFormValues = {
   email: string
@@ -20,8 +17,6 @@ type SignInProps = {
 }
 
 export const SignIn = ({ onSubmit }: SignInProps) => {
-  const [showPassword, setShowPassword] = useState(false)
-
   const {
     control,
     handleSubmit,
@@ -36,32 +31,21 @@ export const SignIn = ({ onSubmit }: SignInProps) => {
 
   const onFormSubmit = handleSubmit(onSubmit)
 
-  const toggleShowPassword = () => setShowPassword(!showPassword)
-
   return (
     <Card className={s.signIn}>
       <form onSubmit={onFormSubmit} className={s.form}>
         <h3>Sign In</h3>
         <DevTool control={control} />
 
-        <ControlledInput
+        <ControlledEmailInput
           // useController props
-          name="email"
-          rules={{
-            required: 'Email is required',
-            pattern: {
-              value: emailRegex,
-              message: 'Invalid email',
-            },
-          }}
           control={control}
           // input props
-          label={'Email'}
           error={errors.email?.message}
           className={s.input}
         />
 
-        <ControlledInput
+        <ControlledPasswordInput
           // useController props
           name="password"
           rules={{
@@ -72,17 +56,6 @@ export const SignIn = ({ onSubmit }: SignInProps) => {
           // input props
           label={'Password'}
           error={errors.password?.message}
-          type={showPassword ? 'text' : 'password'}
-          icon={{
-            iconId: 'eye-outline',
-            side: 'right',
-            onMouseDown() {
-              toggleShowPassword()
-            },
-            onMouseUp() {
-              toggleShowPassword()
-            },
-          }}
           className={s.input}
         />
 
