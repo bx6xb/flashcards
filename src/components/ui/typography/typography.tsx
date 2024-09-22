@@ -34,8 +34,9 @@ const Tags = {
   [key: string]: keyof HTMLElementTagNameMap
 }
 
-export const Typography = ({ variant, children, className = '' }: TypographyProps) => {
+export const Typography = ({ variant, className = '', ...rest }: TypographyProps) => {
   const TagName = Tags[variant]
 
-  return <TagName className={`${s[variant]} ${className}`}>{children}</TagName>
+  // @ts-ignore
+  return <TagName className={`${s[variant]} ${className}`} {...rest} />
 }
