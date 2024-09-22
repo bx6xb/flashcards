@@ -1,0 +1,46 @@
+.signIn {
+  padding: 33px 36px 25px 36px;
+
+  form {
+    text-align: center;
+
+    h1 {
+      margin-bottom: 27px;
+    }
+
+    .inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-bottom: 60px;
+
+      p {
+        text-align: start;
+      }
+
+      .input {
+        width: 348px;
+      }
+    }
+
+    button[type='submit'] {
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+
+      a:first-of-type {
+        color: var(--color-light-900);
+        text-decoration: none;
+      }
+
+      a:last-of-type {
+        color: var(--color-accent-500);
+      }
+    }
+  }
+}
