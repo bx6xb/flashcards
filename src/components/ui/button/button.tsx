@@ -23,7 +23,7 @@ export const Button = <T extends ElementType = 'button'>(props: ButtonProps<T>) 
       className={`${s.button} ${s[variant]} ${fullWidth ? s.fullWidth : ''} ${className}`}
       {...rest}
     >
-      <Typography text={children} variant="body-2" />
+      <Typography variant="body-2">{children}</Typography>
     </Component>
   )
 }
