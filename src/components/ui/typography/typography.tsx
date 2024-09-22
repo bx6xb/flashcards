@@ -15,8 +15,6 @@ export type TypographyProps = {
     | 'overline'
     | 'link-1'
     | 'link-2'
-  color?: 'light' | 'dark' | string
-  text: string
 } & ComponentPropsWithoutRef<'h1' | 'h2' | 'h3' | 'h4' | 'h6' | 'p' | 'span' | 'a'>
 
 const Tags = {
@@ -36,22 +34,8 @@ const Tags = {
   [key: string]: keyof HTMLElementTagNameMap
 }
 
-export const Typography = ({ variant, color = 'light', text, className }: TypographyProps) => {
+export const Typography = ({ variant, children, className = '' }: TypographyProps) => {
   const TagName = Tags[variant]
 
-  return (
-    <TagName
-      style={{
-        color:
-          color === 'light'
-            ? 'var(--color-light-100)'
-            : color === 'dark'
-            ? 'var(--color-dark-900)'
-            : color,
-      }}
-      className={`${s[variant]} ${className ? className : ''}`}
-    >
-      {text}
-    </TagName>
-  )
+  return <TagName className={`${s[variant]} ${className}`}>{children}</TagName>
 }
