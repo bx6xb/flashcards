@@ -59,3 +59,22 @@ export const AsLink: Story = {
     as: 'a',
   },
 }
+export const WithIconOnTheLeft: Story = {
+  args: {
+    variant: 'primary',
+    children: 'Button with icon on the left',
+    icon: {
+      id: 'log-out',
+    },
+  },
+}
+export const WithIconOnTheRight: Story = {
+  args: {
+    variant: 'primary',
+    children: 'Button with icon on the right',
+    icon: {
+      id: 'plus-circle',
+      position: 'right',
+    },
+  },
+}
