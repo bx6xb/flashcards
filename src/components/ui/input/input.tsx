@@ -10,10 +10,11 @@ export type InputProps = {
     side: 'left' | 'right'
   } & ComponentPropsWithoutRef<'button'>
   error?: string
+  fullWidth?: boolean
 } & ComponentPropsWithoutRef<'input'>
 
 export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  const { label, icon, error, disabled, className = '', ...rest } = props
+  const { label, icon, error, disabled, fullWidth, className = '', ...rest } = props
 
   let iconButton: ReactNode
 
@@ -38,7 +39,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
         </Typography>
       )}
 
-      <div className={`${s.inputWrapper} ${className}`}>
+      <div className={`${s.inputWrapper} ${className} ${fullWidth ? s.fullWidth : ''}`}>
         <input
           className={`${error ? s.inputError : ''} ${
             icon?.side === 'left'
