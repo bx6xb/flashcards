@@ -21,9 +21,23 @@ export const SignUp = ({ onSubmit }: SignUpProps) => {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<SignUpFormValues>()
+    getValues,
+  } = useForm<SignUpFormValues>({
+    defaultValues: {
+      email: '',
+      password: '',
+      confirmPassword: '',
+    },
+  })
 
   const onFormSubmit = handleSubmit(onSubmit)
+
+  let confirmPasswordError = ''
+  const { password, confirmPassword } = getValues()
+
+  if (password !== confirmPassword) {
+    confirmPasswordError = 'Passwords must match'
+  }
 
   return (
     <Card className={s.signIn}>
@@ -58,14 +72,10 @@ export const SignUp = ({ onSubmit }: SignUpProps) => {
           <ControlledPasswordInput
             // useController props
             name="confirmPassword"
-            rules={{
-              required: "Passwords don't match",
-              minLength: { value: 3, message: 'Password has to be at least 3 characters long' },
-            }}
             control={control}
             // input props
             label={'Confirm Password'}
-            error={errors.confirmPassword?.message}
+            error={confirmPasswordError}
             className={s.input}
           />
         </div>
