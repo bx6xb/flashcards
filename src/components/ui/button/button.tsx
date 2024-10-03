@@ -41,7 +41,7 @@ export const Button = <T extends ElementType = 'button'>(props: ButtonProps<T>) 
       {...rest}
     >
       {icon && position === 'left' && IconComponent}
-      <Typography variant="subtitle-2">{children}</Typography>
+      {children && <Typography variant="subtitle-2">{children}</Typography>}
       {icon && position === 'right' && IconComponent}
     </Component>
   )
