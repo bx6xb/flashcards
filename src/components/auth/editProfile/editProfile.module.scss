@@ -1,0 +1,48 @@
+.editProfile {
+  padding: 33px 36px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    margin-bottom: 27px;
+  }
+
+  .avatarWrapper {
+    width: 96px;
+    height: 96px;
+    position: relative;
+    margin-bottom: 6px;
+
+    img.avatar {
+      width: inherit;
+      height: inherit;
+    }
+
+    .button {
+      padding: 4px;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  }
+
+  .nickname {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    svg {
+      cursor: pointer;
+    }
+  }
+
+  .email {
+    color: var(--color-dark-100);
+    margin-bottom: 13px;
+  }
+
+  .logout {
+    margin-bottom: 41px;
+  }
+}
