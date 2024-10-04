@@ -32,14 +32,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   }
 
   return (
-    <div className={s.inputRoot}>
+    <div className={`${s.inputRoot} ${fullWidth ? s.fullWidth : ''}`}>
       {!!label && (
         <Typography variant="body-2" className={s.label}>
           {label}
         </Typography>
       )}
 
-      <div className={`${s.inputWrapper} ${className} ${fullWidth ? s.fullWidth : ''}`}>
+      <div className={`${s.inputWrapper} ${className}`}>
         <input
           className={`${error ? s.inputError : ''} ${
             icon?.side === 'left'

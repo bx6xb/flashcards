@@ -4,9 +4,14 @@
 }
 
 .inputRoot {
+  width: 284px;
   position: relative;
   display: flex;
   flex-direction: column;
+
+  &.fullWidth {
+    width: 100%;
+  }
 }
 
 .label {
@@ -15,11 +20,11 @@
 }
 
 .inputWrapper {
-  width: 284px;
+  width: 100%;
   position: inherit;
 
   input {
-    width: 100%;
+    width: inherit;
     height: 36px;
     padding: 0 12px;
 
@@ -74,10 +79,6 @@
       @include default-input-styles;
     }
   }
-}
-
-.fullWidth {
-  width: 100%;
 }
 
 .inputBtn {
