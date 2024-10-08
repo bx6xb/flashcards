@@ -1,0 +1,19 @@
+th {
+  background-color: var(--color-dark-500);
+  padding: 8px 0 8px 24px;
+  text-align: center;
+
+  span {
+    margin-right: 24px;
+
+    svg {
+      position: relative;
+      left: 4px;
+      transform: rotate(-90deg);
+
+      &[data-order='desc'] {
+        transform: rotate(90deg);
+      }
+    }
+  }
+}
