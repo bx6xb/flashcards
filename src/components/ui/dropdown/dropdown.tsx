@@ -12,9 +12,7 @@ export const Dropdown = (props: DropdownProps) => {
 
   const mappedOptions = options.map((o, i) => (
     <Fragment key={i}>
-      <DropdownMenu.Item className={s.item}>
-        {o}
-      </DropdownMenu.Item>
+      <DropdownMenu.Item className={s.item}>{o}</DropdownMenu.Item>
       {i + 1 !== options.length && <DropdownMenu.Separator className={s.separator} />}
     </Fragment>
   ))
