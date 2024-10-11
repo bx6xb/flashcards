@@ -21,37 +21,40 @@ export const DecksTable = ({ decks }: DecksTableProps) => {
     <Icon key={icon} id={icon} width={16} height={16} viewBox="0 0 22 22" />
   ))
 
+  const mappedDecks = decks.map(deck => {
+    const { id, name, cardsCount, author, updated } = deck
+
+    const updatedAt = new Date(updated).toLocaleDateString('ru-RU')
+
+    const mappedDeckData = Object.entries({
+      name,
+      cardsCount,
+      updatedAt,
+      authorName: author.name,
+    }).map(([_, v]) => (
+      <td key={v}>
+        <Typography variant="subtitle-2">{v}</Typography>
+      </td>
+    ))
+
+    return (
+      <tr key={id}>
+        {mappedDeckData}
+
+        <td className={s.icons}>{mappedIcons}</td>
+      </tr>
+    )
+  })
+
   return (
     <table className={s.decksTable}>
       <thead>
-        <tr>{mappedTheadValues}</tr>
+        <tr>
+          {mappedTheadValues}
+          <th />
+        </tr>
       </thead>
-      <tbody>
-        {decks.map(deck => {
-          const { id, name, cardsCount, author, updated } = deck
-
-          const updatedAt = new Date(updated).toLocaleDateString('ru-RU')
-
-          const mappedDeckData = Object.entries({
-            name,
-            cardsCount,
-            updatedAt,
-            authorName: author.name,
-          }).map(([_, v]) => (
-            <td key={v}>
-              <Typography variant="subtitle-2">{v}</Typography>
-            </td>
-          ))
-
-          return (
-            <tr key={id}>
-              {mappedDeckData}
-
-              <td className={s.icons}>{mappedIcons}</td>
-            </tr>
-          )
-        })}
-      </tbody>
+      <tbody>{mappedDecks}</tbody>
     </table>
   )
 }
