@@ -1,0 +1,47 @@
+$border: 1px solid var(--color-dark-500);
+
+.decksTable {
+  width: 1006px;
+  border-spacing: 0;
+  border-top: $border;
+  border-left: $border;
+  border-right: $border;
+
+  th {
+    background-color: var(--color-dark-500);
+    padding: 8px 0 8px 24px;
+    text-align: start;
+
+    span {
+      margin-right: 24px;
+
+      svg {
+        position: relative;
+        left: 4px;
+        transform: rotate(-90deg);
+
+        &[data-order='desc'] {
+          transform: rotate(90deg);
+        }
+      }
+    }
+  }
+
+  td {
+    height: 61px;
+    padding: 0 24px;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--color-dark-500);
+
+    &.icons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+
+      svg {
+        cursor: pointer;
+      }
+    }
+  }
+}
