@@ -8,7 +8,7 @@ export function App() {
   return (
     <Provider store={store}>
       <Header />
-      <Container>
+      <Container className="appContentWrapper">
         <Router />
       </Container>
     </Provider>
