@@ -42,7 +42,7 @@ export const SignIn = ({ onSubmit }: SignInProps) => {
           control={control}
           // input props
           error={errors.email?.message}
-          className={s.input}
+          fullWidth
         />
 
         <ControlledPasswordInput
@@ -56,7 +56,7 @@ export const SignIn = ({ onSubmit }: SignInProps) => {
           // input props
           label={'Password'}
           error={errors.password?.message}
-          className={s.input}
+          fullWidth
         />
 
         <ControlledCheckbox
