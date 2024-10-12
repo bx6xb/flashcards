@@ -4,6 +4,7 @@ import { Dropdown } from '@/components/ui/dropdown'
 import { Avatar } from '@/components/auth/avatar'
 import defaultAvatar from '../../../assets/defaultAvatar.png'
 import { Typography } from '@/components/ui/typography'
+import { Container } from '@/components/ui/container'
 
 export const Header = () => {
   const avatar = <Avatar src={defaultAvatar} />
@@ -30,12 +31,16 @@ export const Header = () => {
 
   return (
     <header className={s.header}>
-      <Icon id="logo" width={157} height={36} viewBox="0 0 157 36" />
+      <Container>
+        <div className={s.headerContent}>
+          <Icon id="logo" width={157} height={36} viewBox="0 0 157 36" />
 
-      <div>
-        <Typography variant="subtitle-1">{username}</Typography>
-        <Dropdown iconButton={avatar} options={options} />
-      </div>
+          <div>
+            <Typography variant="subtitle-1">{username}</Typography>
+            <Dropdown iconButton={avatar} options={options} />
+          </div>
+        </div>
+      </Container>
     </header>
   )
 }
