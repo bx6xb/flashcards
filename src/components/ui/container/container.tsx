@@ -1,10 +1,8 @@
-import { ReactNode } from 'react'
+import { ComponentPropsWithoutRef } from 'react'
 import s from './container.module.scss'
 
-type ContainerProps = {
-  children: ReactNode
-}
+type ContainerProps = ComponentPropsWithoutRef<'div'>
 
-export const Container = ({ children }: ContainerProps) => {
-  return <div className={s.container}>{children}</div>
-}
+export const Container = ({ className = '', ...rest }: ContainerProps) => (
+  <div className={`${s.container} ${className}`} {...rest} />
+)
