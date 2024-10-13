@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { DecksListResponse } from './decks/decks.types'
+import { DecksListResponse, DecksQueryParams } from './decks/decks.types'
 
 export const flashcardsApi = createApi({
   reducerPath: 'flashcardsApi',
@@ -11,8 +11,11 @@ export const flashcardsApi = createApi({
     },
   }),
   endpoints: builder => ({
-    getDecks: builder.query<DecksListResponse, void>({
-      query: () => `v2/decks`,
+    getDecks: builder.query<DecksListResponse, DecksQueryParams | void>({
+      query: args => ({
+        url: `v2/decks`,
+        params: args ?? undefined,
+      }),
     }),
   }),
 })
