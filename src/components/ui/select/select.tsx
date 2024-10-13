@@ -5,18 +5,16 @@ import { ComponentPropsWithoutRef } from 'react'
 
 export type SelectProps = {
   placeholder: string | number
-  items: Item[]
+  options: ComponentPropsWithoutRef<typeof SelectRadix.Item>[]
   label?: string
   className?: string
   triggerStyleId?: string
 } & ComponentPropsWithoutRef<typeof SelectRadix.Root>
 
-type Item = { value: string; label?: string } & ComponentPropsWithoutRef<typeof SelectRadix.Item>
-
 export const Select = (props: SelectProps) => {
   const {
     placeholder,
-    items,
+    options,
     label,
     disabled,
     className = '',
@@ -24,9 +22,9 @@ export const Select = (props: SelectProps) => {
     ...rest
   } = props
 
-  const mappedItems = items.map(({ value, label, className = '', ...rest }) => (
-    <SelectRadix.Item className={`${s.item} ${className}`} value={value} key={value} {...rest}>
-      <SelectRadix.ItemText>{label || value}</SelectRadix.ItemText>
+  const mappedItems = options.map(({ value, className = '', ...rest }) => (
+    <SelectRadix.Item className={`${s.option} ${className}`} value={value} key={value} {...rest}>
+      <SelectRadix.ItemText>{value}</SelectRadix.ItemText>
     </SelectRadix.Item>
   ))
 
