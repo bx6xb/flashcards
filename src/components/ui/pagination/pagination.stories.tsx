@@ -24,16 +24,15 @@ type Story = StoryObj<typeof meta>
 
 // stories
 export const PaginationBaseExample: Story = {}
-
 export const ClickablePagination: Story = {
   render(args) {
     const [page, setPage] = useState(1)
-    const [portion, setPortion] = useState<Portion>(30)
+    const [portion, setPortion] = useState<Portion>(10)
 
     return (
       <Pagination
         {...args}
-        itemsCount={510}
+        itemsCount={200}
         currentPage={page}
         pageOnChange={setPage}
         portion={portion}

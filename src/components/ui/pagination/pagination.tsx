@@ -13,6 +13,13 @@ export type PaginationProps = {
 
 export type Portion = 10 | 20 | 30 | 50 | 100
 
+function createItems(...values: string[]) {
+  return values.map(value => ({
+    value,
+    className: s.item,
+  }))
+}
+
 export const Pagination = (props: PaginationProps) => {
   const { currentPage, portion, itemsCount, pageOnChange, portionOnChange, className = '' } = props
 
@@ -20,22 +27,26 @@ export const Pagination = (props: PaginationProps) => {
     portionOnChange(+portion as Portion)
   }
 
-  const lastPage = Math.ceil(itemsCount / portion)
-  const content: Array<number | string> = [1]
+  const pages = Math.ceil(itemsCount / portion)
+  let content: Array<number | 'leftDots' | 'rightDots'>
 
-  if (currentPage < 4) {
-    content.push(2, 3, 4, 5, '...', lastPage)
+  if (pages < 6) {
+    content = Array.from({ length: pages }, (_, i) => i + 1)
+  } else if (currentPage < 3) {
+    content = [1, 2, 3, 'rightDots', pages]
+  } else if (currentPage === 3) {
+    content = [1, 2, 3, 4, 'rightDots', pages]
+  } else if (currentPage > pages - 2) {
+    content = [1, 'leftDots', pages - 2, pages - 1, pages]
+  } else if (currentPage === pages - 2) {
+    content = [1, 'leftDots', pages - 3, pages - 2, pages - 1, pages]
   } else {
-    content.push('...', currentPage - 1, currentPage)
-
-    if (currentPage !== lastPage) {
-      const nextPage = currentPage + 1
-      nextPage === lastPage ? content.push(lastPage) : content.push(nextPage, '...', lastPage)
-    }
+    content = [1, 'leftDots', currentPage - 1, currentPage, currentPage + 1, 'rightDots', pages]
   }
 
   const mappedContent = content.map((v, i) => {
     const key = `${v}${i}`
+
     return typeof v === 'number' ? (
       <button
         key={key}
@@ -45,19 +56,14 @@ export const Pagination = (props: PaginationProps) => {
         {v}
       </button>
     ) : (
-      <span key={key}>{v}</span>
+      <span key={key} onClick={() => pageOnChange(currentPage - (v === 'leftDots' ? 3 : -3))}>
+        ...
+      </span>
     )
   })
 
   const isLeftArrowDisabled = currentPage - 3 < 1
-  const isRightArrowDisabled = currentPage + 3 > lastPage
-
-  function createItems(...values: string[]) {
-    return values.map(value => ({
-      value,
-      className: s.item,
-    }))
-  }
+  const isRightArrowDisabled = currentPage + 3 > pages
 
   return (
     <div className={`${s.pagination} ${className}`}>
@@ -80,14 +86,14 @@ export const Pagination = (props: PaginationProps) => {
       </button>
 
       <div className={s.portion}>
-        Показать
+        Show
         <Select
           placeholder={portion.toString()}
-          items={createItems('10', '20', '30', '50', '100')}
+          options={createItems('10', '20', '30', '50', '100')}
           onValueChange={portionOnChangeHandler}
           triggerStyleId={s.trigger}
         />
-        на странице
+        per page
       </div>
     </div>
   )
