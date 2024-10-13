@@ -1,0 +1,30 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 36px;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 42px;
+
+  .filterWithLabel {
+    position: relative;
+
+    p {
+      position: absolute;
+      top: -25px;
+    }
+  }
+}
+
+.decksTable {
+  margin-bottom: 24px;
+}
+
+.pagination {
+  margin-bottom: 168px;
+}

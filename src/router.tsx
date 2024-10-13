@@ -5,7 +5,7 @@ import {
   Outlet,
   Navigate,
 } from 'react-router-dom'
-import { DecksPage } from './pages/decks.page'
+import { DecksPage } from './pages/decksPage/decks.page'
 
 const publicRoutes: RouteObject[] = [
   {
