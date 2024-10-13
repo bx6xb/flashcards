@@ -3,32 +3,46 @@ import { ComponentPropsWithoutRef, ReactNode } from 'react'
 import s from './tabs.module.scss'
 
 export type Tab = {
-  id: string
-  name: string
-  content: ReactNode
+  label: string
+  content?: ReactNode
   isDisabled?: boolean
+  onClick: (label: string) => void
 }
 
 export type TabsProps = {
   tabs: Tab[]
-} & ComponentPropsWithoutRef<typeof TabsRadix.Root>
+  defaultActiveLabel: string
+} & Omit<ComponentPropsWithoutRef<typeof TabsRadix.Root>, 'defaultValue'>
 
 export const Tabs = (props: TabsProps) => {
-  const { tabs, ...rest } = props
+  const { tabs, defaultActiveLabel, ...rest } = props
 
-  const tabSwitchers = tabs.map(t => (
-    <TabsRadix.Trigger key={t.id} value={t.id} className={s.switcher} disabled={t.isDisabled}>
-      {t.name}
-    </TabsRadix.Trigger>
-  ))
-  const tabContent = tabs.map(t => (
-    <TabsRadix.Content key={t.id} value={t.id}>
-      {t.content}
+  const tabSwitchers = tabs.map(({ label, isDisabled, onClick }) => {
+    const tabOnClick = () => {
+      onClick(label)
+    }
+
+    return (
+      <TabsRadix.Trigger
+        key={label}
+        value={label}
+        className={s.switcher}
+        disabled={isDisabled}
+        onClick={tabOnClick}
+      >
+        {label}
+      </TabsRadix.Trigger>
+    )
+  })
+
+  const tabContent = tabs.map(({ label, content }) => (
+    <TabsRadix.Content key={label} value={label}>
+      {content}
     </TabsRadix.Content>
   ))
 
   return (
-    <TabsRadix.Root defaultValue="account" {...rest}>
+    <TabsRadix.Root defaultValue={defaultActiveLabel} {...rest}>
       <TabsRadix.List>{tabSwitchers}</TabsRadix.List>
       {tabContent}
     </TabsRadix.Root>

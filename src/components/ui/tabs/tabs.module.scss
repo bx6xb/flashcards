@@ -23,15 +23,15 @@
     border-color: var(--color-dark-100);
   }
 
-  &:active {
-    color: inherit;
-    background-color: var(--color-accent-500);
-    border-color: var(--color-accent-500);
-  }
-
   &:disabled {
     color: var(--color-dark-300);
     background-color: var(--color-dark-700);
     border-color: inherit;
+  }
+
+  &[data-state='active'] {
+    color: inherit;
+    background-color: var(--color-accent-500);
+    border-color: var(--color-accent-500);
   }
 }
