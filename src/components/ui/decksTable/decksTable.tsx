@@ -5,12 +5,13 @@ import { Deck } from '@/services/decks/decks.types'
 
 type DecksTableProps = {
   decks: Deck[]
+  className?: string
 }
 
 const theadValues = ['Name', 'Cards', 'Last Updated', 'Created By']
 const icons = ['play-circle-outline', 'edit-2-outline', 'trash-outline']
 
-export const DecksTable = ({ decks }: DecksTableProps) => {
+export const DecksTable = ({ decks, className = '' }: DecksTableProps) => {
   const mappedTheadValues = theadValues.map(v => (
     <th key={v}>
       <Typography variant="subtitle-2">{v}</Typography>
@@ -47,7 +48,7 @@ export const DecksTable = ({ decks }: DecksTableProps) => {
   })
 
   return (
-    <table className={s.decksTable}>
+    <table className={`${s.decksTable} ${className}`}>
       <thead>
         <tr>
           {mappedTheadValues}

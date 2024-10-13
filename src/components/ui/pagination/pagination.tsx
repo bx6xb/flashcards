@@ -8,12 +8,13 @@ export type PaginationProps = {
   itemsCount: number
   pageOnChange: (page: number) => void
   portionOnChange: (portion: Portion) => void
+  className?: string
 }
 
 export type Portion = 10 | 20 | 30 | 50 | 100
 
 export const Pagination = (props: PaginationProps) => {
-  const { currentPage, portion, itemsCount, pageOnChange, portionOnChange } = props
+  const { currentPage, portion, itemsCount, pageOnChange, portionOnChange, className = '' } = props
 
   const portionOnChangeHandler = (portion: string) => {
     portionOnChange(+portion as Portion)
@@ -59,7 +60,7 @@ export const Pagination = (props: PaginationProps) => {
   }
 
   return (
-    <div className={s.pagination}>
+    <div className={`${s.pagination} ${className}`}>
       <button
         className={s.arrows}
         onClick={() => pageOnChange(currentPage - 3)}
