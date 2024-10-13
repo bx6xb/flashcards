@@ -33,7 +33,7 @@ export const DecksTable = ({ decks, className = '' }: DecksTableProps) => {
       updatedAt,
       authorName: author.name,
     }).map(([_, v]) => (
-      <td key={v}>
+      <td key={id + v}>
         <Typography variant="subtitle-2">{v}</Typography>
       </td>
     ))
