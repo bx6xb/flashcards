@@ -45,8 +45,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
             icon?.side === 'left'
               ? s.inputPaddingOnLeftSide
               : icon?.side === 'right'
-                ? s.inputPaddingOnRightSide
-                : ''
+              ? s.inputPaddingOnRightSide
+              : ''
           }`}
           disabled={disabled}
           ref={ref}
