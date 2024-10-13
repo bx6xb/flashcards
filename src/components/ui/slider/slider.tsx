@@ -3,7 +3,7 @@ import s from './slider.module.scss'
 import { ChangeEvent, ComponentPropsWithoutRef } from 'react'
 import { Input } from '../input'
 
-export type SliderValue = [number] | [number, number]
+export type SliderValue = number[]
 export type SliderProps = {
   value: SliderValue
   onValueChange: (value: SliderValue) => void
