@@ -19,8 +19,8 @@ export const Deck = ({ deck }: DeckDataProps) => {
     cardsCount,
     updatedAt,
     authorName: author.name,
-  }).map(([_, v]) => (
-    <td key={id + v}>
+  }).map(([_, v], i) => (
+    <td key={id + v + i}>
       <Typography variant="subtitle-2">{v}</Typography>
     </td>
   ))
