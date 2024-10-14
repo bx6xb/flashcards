@@ -1,0 +1,11 @@
+.clickable {
+  cursor: pointer;
+
+  svg {
+    margin-left: 4px;
+
+    &[data-sort-by='desc'] {
+      transform: rotate(-180deg);
+    }
+  }
+}
