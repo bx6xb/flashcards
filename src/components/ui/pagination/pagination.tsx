@@ -99,7 +99,7 @@ export const Pagination = (props: PaginationProps) => {
       <div className={s.itemsPerPage}>
         Show
         <Select
-          placeholder={itemsPerPage.toString()}
+          value={itemsPerPage.toString()}
           options={createItems('10', '20', '30', '50', '100')}
           onValueChange={onItemsPerPageChangeHandler}
           triggerStyleId={s.trigger}

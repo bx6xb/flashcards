@@ -4,16 +4,16 @@ import { Icon } from '../icon'
 import { ComponentPropsWithoutRef } from 'react'
 
 export type SelectProps = {
-  placeholder: string | number
   options: ComponentPropsWithoutRef<typeof SelectRadix.Item>[]
   label?: string
   className?: string
   triggerStyleId?: string
+  placeholder?: string | number
 } & ComponentPropsWithoutRef<typeof SelectRadix.Root>
 
 export const Select = (props: SelectProps) => {
   const {
-    placeholder,
+    placeholder = '',
     options,
     label,
     disabled,
