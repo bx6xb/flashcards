@@ -29,6 +29,10 @@
     transition: 0.2s;
   }
 
+  .threeDots {
+    cursor: pointer;
+  }
+
   .selected {
     background-color: var(--color-light-100);
     color: var(--color-dark-900);

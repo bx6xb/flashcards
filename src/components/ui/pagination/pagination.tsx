@@ -56,7 +56,11 @@ export const Pagination = (props: PaginationProps) => {
         {v}
       </button>
     ) : (
-      <span key={key} onClick={() => pageOnChange(currentPage - (v === 'leftDots' ? 3 : -3))}>
+      <span
+        key={key}
+        className={s.threeDots}
+        onClick={() => pageOnChange(currentPage - (v === 'leftDots' ? 3 : -3))}
+      >
         ...
       </span>
     )
