@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Pagination, Portion } from './pagination'
+import { Pagination, ItemsPerPage } from './pagination'
 import { useState } from 'react'
 
 const meta = {
@@ -9,12 +9,12 @@ const meta = {
   args: {
     currentPage: 3,
     itemsCount: 510,
-    portion: 20,
-    pageOnChange(page: number) {
+    itemsPerPage: 20,
+    onPageChange(page: number) {
       alert(page)
     },
-    portionOnChange(portion: Portion) {
-      alert(portion)
+    onItemsPerPageChange(itemsPerPage: ItemsPerPage) {
+      alert(itemsPerPage)
     },
   },
 } satisfies Meta<typeof Pagination>
@@ -27,16 +27,16 @@ export const PaginationBaseExample: Story = {}
 export const ClickablePagination: Story = {
   render(args) {
     const [page, setPage] = useState(1)
-    const [portion, setPortion] = useState<Portion>(10)
+    const [itemsPerPage, setItemsPerPage] = useState<ItemsPerPage>(10)
 
     return (
       <Pagination
         {...args}
         itemsCount={200}
         currentPage={page}
-        pageOnChange={setPage}
-        portion={portion}
-        portionOnChange={setPortion}
+        onPageChange={setPage}
+        itemsPerPage={itemsPerPage}
+        onItemsPerPageChange={setItemsPerPage}
       />
     )
   },

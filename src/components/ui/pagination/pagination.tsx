@@ -4,14 +4,14 @@ import { Select } from '../select'
 
 export type PaginationProps = {
   currentPage: number
-  portion: Portion
+  itemsPerPage: ItemsPerPage
   itemsCount: number
-  pageOnChange: (page: number) => void
-  portionOnChange: (portion: Portion) => void
+  onPageChange: (page: number) => void
+  onItemsPerPageChange: (itemsPerPage: ItemsPerPage) => void
   className?: string
 }
 
-export type Portion = 10 | 20 | 30 | 50 | 100
+export type ItemsPerPage = 10 | 20 | 30 | 50 | 100
 
 function createItems(...values: string[]) {
   return values.map(value => ({
@@ -21,13 +21,20 @@ function createItems(...values: string[]) {
 }
 
 export const Pagination = (props: PaginationProps) => {
-  const { currentPage, portion, itemsCount, pageOnChange, portionOnChange, className = '' } = props
+  const {
+    currentPage,
+    itemsPerPage,
+    itemsCount,
+    onPageChange,
+    onItemsPerPageChange,
+    className = '',
+  } = props
 
-  const portionOnChangeHandler = (portion: string) => {
-    portionOnChange(+portion as Portion)
+  const onItemsPerPageChangeHandler = (itemsPerPage: string) => {
+    onItemsPerPageChange(+itemsPerPage as ItemsPerPage)
   }
 
-  const pages = Math.ceil(itemsCount / portion)
+  const pages = Math.ceil(itemsCount / itemsPerPage)
   let content: Array<number | 'leftDots' | 'rightDots'>
 
   if (pages < 6) {
@@ -51,7 +58,7 @@ export const Pagination = (props: PaginationProps) => {
       <button
         key={key}
         className={`${s.contentItem} ${v === currentPage ? s.selected : ''}`}
-        onClick={() => pageOnChange(v)}
+        onClick={() => onPageChange(v)}
       >
         {v}
       </button>
@@ -59,7 +66,7 @@ export const Pagination = (props: PaginationProps) => {
       <span
         key={key}
         className={s.threeDots}
-        onClick={() => pageOnChange(currentPage - (v === 'leftDots' ? 3 : -3))}
+        onClick={() => onPageChange(currentPage - (v === 'leftDots' ? 3 : -3))}
       >
         ...
       </span>
@@ -73,7 +80,7 @@ export const Pagination = (props: PaginationProps) => {
     <div className={`${s.pagination} ${className}`}>
       <button
         className={s.arrows}
-        onClick={() => pageOnChange(currentPage - 3)}
+        onClick={() => onPageChange(currentPage - 3)}
         disabled={isLeftArrowDisabled}
       >
         <Icon id="arrow-ios-back-outline" width={16} height={16} viewBox="0 0 24 24" />
@@ -83,18 +90,18 @@ export const Pagination = (props: PaginationProps) => {
 
       <button
         className={s.arrows}
-        onClick={() => pageOnChange(currentPage + 3)}
+        onClick={() => onPageChange(currentPage + 3)}
         disabled={isRightArrowDisabled}
       >
         <Icon id="arrow-ios-forward-outline" width={16} height={16} viewBox="0 0 24 24" />
       </button>
 
-      <div className={s.portion}>
+      <div className={s.itemsPerPage}>
         Show
         <Select
-          placeholder={portion.toString()}
+          placeholder={itemsPerPage.toString()}
           options={createItems('10', '20', '30', '50', '100')}
-          onValueChange={portionOnChangeHandler}
+          onValueChange={onItemsPerPageChangeHandler}
           triggerStyleId={s.trigger}
         />
         per page
