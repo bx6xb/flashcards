@@ -16,7 +16,7 @@ export function DecksPage() {
   const [page, setPage] = useState(1)
   const [portion, setPortion] = useState<Portion>(10)
 
-  const { data, isLoading, error } = useGetDecksQuery({ name: search })
+  const { data, isLoading, error } = useGetDecksQuery({ name: search, currentPage: page })
 
   console.log(data)
 
