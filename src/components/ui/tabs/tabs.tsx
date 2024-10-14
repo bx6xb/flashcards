@@ -6,34 +6,31 @@ export type Tab = {
   label: string
   content?: ReactNode
   isDisabled?: boolean
-  onClick: (label: string) => void
 }
 
 export type TabsProps = {
   tabs: Tab[]
-  defaultActiveLabel: string
-} & Omit<ComponentPropsWithoutRef<typeof TabsRadix.Root>, 'defaultValue'>
+  onTabClick: (label: string) => void
+} & ComponentPropsWithoutRef<typeof TabsRadix.Root>
 
 export const Tabs = (props: TabsProps) => {
-  const { tabs, defaultActiveLabel, ...rest } = props
+  const { tabs, onTabClick, ...rest } = props
 
-  const tabSwitchers = tabs.map(({ label, isDisabled, onClick }) => {
-    const tabOnClick = () => {
-      onClick(label)
-    }
+  const tabOnClickHandler = (label: string) => {
+    onTabClick(label)
+  }
 
-    return (
-      <TabsRadix.Trigger
-        key={label}
-        value={label}
-        className={s.switcher}
-        disabled={isDisabled}
-        onClick={tabOnClick}
-      >
-        {label}
-      </TabsRadix.Trigger>
-    )
-  })
+  const tabSwitchers = tabs.map(({ label, isDisabled }) => (
+    <TabsRadix.Trigger
+      key={label}
+      value={label}
+      className={s.switcher}
+      disabled={isDisabled}
+      onClick={() => tabOnClickHandler(label)}
+    >
+      {label}
+    </TabsRadix.Trigger>
+  ))
 
   const tabContent = tabs.map(({ label, content }) => (
     <TabsRadix.Content key={label} value={label}>
@@ -42,7 +39,7 @@ export const Tabs = (props: TabsProps) => {
   ))
 
   return (
-    <TabsRadix.Root defaultValue={defaultActiveLabel} {...rest}>
+    <TabsRadix.Root {...rest}>
       <TabsRadix.List>{tabSwitchers}</TabsRadix.List>
       {tabContent}
     </TabsRadix.Root>

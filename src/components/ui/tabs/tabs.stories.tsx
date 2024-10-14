@@ -1,25 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Tab, Tabs } from '.'
 
-const onClick = (label: string) => {
+const onTabClick = (label: string) => {
   alert(`Tab - ${label}`)
 }
 
 const tabs: Tab[] = [
-  { label: 'Account', content: 'Make changes to your account', onClick },
+  { label: 'Account', content: 'Make changes to your account' },
   {
     label: 'Documents',
     content: 'Access and update your documents',
-    onClick,
   },
   {
     label: 'Settings',
     content: 'Edit your profile or update contact information',
-    onClick,
   },
   {
     label: 'With no content',
-    onClick,
   },
 ]
 
@@ -29,7 +26,8 @@ const meta = {
   tags: ['autodocs'],
   args: {
     tabs,
-    defaultActiveLabel: tabs[1].label,
+    defaultValue: tabs[1].label,
+    onTabClick,
   },
 } satisfies Meta<typeof Tabs>
 
