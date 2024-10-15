@@ -6,11 +6,13 @@ import {
   Navigate,
 } from 'react-router-dom'
 import { DecksPage } from './pages/decksPage/decks.page'
+import { store } from './services/store'
+import { SignIn } from './components/auth/signIn'
 
 const publicRoutes: RouteObject[] = [
   {
     path: '/login',
-    element: <div>login</div>,
+    element: <SignIn onSubmit={() => {}} />,
   },
 ]
 
@@ -34,7 +36,7 @@ export function Router() {
 }
 
 function PrivateRoutes() {
-  const isAuthenticated = true
+  const isAuthenticated = store.getState().app.isUserAuthorized
 
   return isAuthenticated ? <Outlet /> : <Navigate to="/login" />
 }
