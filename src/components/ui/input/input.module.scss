@@ -4,6 +4,7 @@
 }
 
 .inputRoot {
+  width: 284px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -19,7 +20,7 @@
 }
 
 .inputWrapper {
-  width: 284px;
+  width: inherit;
   position: inherit;
 
   input {
