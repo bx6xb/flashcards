@@ -6,6 +6,8 @@ import { Card } from '@/components/ui/card'
 import s from './signIn.module.scss'
 import { ControlledPasswordInput } from '@/components/ui/controlled/controlledPasswordInput'
 import { ControlledEmailInput } from '@/components/ui/controlled/controlledEmailInput'
+import { Typography } from '@/components/ui/typography'
+import { Link } from 'react-router-dom'
 
 export type SignInFormValues = {
   email: string
@@ -33,7 +35,7 @@ export const SignIn = ({ onSubmit }: SignInProps) => {
 
   return (
     <Card className={s.signIn}>
-      <form onSubmit={onFormSubmit} className={s.form}>
+      <form onSubmit={onFormSubmit}>
         <h3>Sign In</h3>
         <DevTool control={control} />
 
@@ -66,21 +68,21 @@ export const SignIn = ({ onSubmit }: SignInProps) => {
           className={s.rememberMe}
         />
 
-        <a href="#" className={s.forgotPassword}>
-          Forgot Password?
-        </a>
+        <Typography variant="body-2" className={s.forgotPassword}>
+          <Link to={'/forgot-password'}>Forgot Password?</Link>
+        </Typography>
 
         <Button type="submit" fullWidth>
           Sign In
         </Button>
 
-        <a href="#" className={s.dontHaveAnAccount}>
+        <Typography variant="body-2" className={s.dontHaveAnAccount}>
           Don't have an account?
-        </a>
+        </Typography>
 
-        <a href="#" className={s.signUp}>
-          Sign In
-        </a>
+        <Link to={'/sign-up'} className={s.signUp}>
+          Sign Up
+        </Link>
       </form>
     </Card>
   )
