@@ -6,6 +6,7 @@ import { Card } from '@/components/ui/card'
 import s from './signIn.module.scss'
 import { ControlledPasswordInput } from '@/components/ui/controlled/controlledPasswordInput'
 import { ControlledEmailInput } from '@/components/ui/controlled/controlledEmailInput'
+import { Typography } from '@/components/ui/typography'
 
 export type SignInFormValues = {
   email: string
@@ -66,20 +67,20 @@ export const SignIn = ({ onSubmit }: SignInProps) => {
           className={s.rememberMe}
         />
 
-        <a href="#" className={s.forgotPassword}>
+        <Typography variant="body-2" className={s.forgotPassword}>
           Forgot Password?
-        </a>
+        </Typography>
 
         <Button type="submit" fullWidth>
           Sign In
         </Button>
 
-        <a href="#" className={s.dontHaveAnAccount}>
+        <Typography variant="body-2" className={s.dontHaveAnAccount}>
           Don't have an account?
-        </a>
+        </Typography>
 
         <a href="#" className={s.signUp}>
-          Sign In
+          Sign Up
         </a>
       </form>
     </Card>

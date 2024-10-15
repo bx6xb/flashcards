@@ -1,5 +1,6 @@
 .signIn {
   padding: 33px 36px 25px 36px;
+  margin: 0 auto;
 }
 
 .form {
@@ -19,10 +20,7 @@
 }
 
 .forgotPassword {
-  font-size: var(--font-size-s);
-  text-decoration: none;
   align-self: flex-end;
-  color: var(--color-light-100);
   margin-bottom: 39px;
 }
 
@@ -32,8 +30,6 @@
 
 .dontHaveAnAccount {
   color: var(--color-light-900);
-  font-size: var(--font-size-s);
-  text-decoration: none;
 }
 
 .signUp {
