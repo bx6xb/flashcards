@@ -80,9 +80,7 @@ export const SignIn = ({ onSubmit }: SignInProps) => {
           Don't have an account?
         </Typography>
 
-        <a href="#" className={s.signUp}>
-          Sign Up
-        </a>
+        <Link to={'/sign-up'}>Sign Up</Link>
       </form>
     </Card>
   )
