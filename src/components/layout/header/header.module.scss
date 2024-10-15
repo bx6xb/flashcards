@@ -29,24 +29,3 @@
     }
   }
 }
-
-.option {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
-  div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    span {
-      color: var(--color-dark-100);
-    }
-  }
-
-  svg {
-    position: relative;
-    top: -1px;
-  }
-}
