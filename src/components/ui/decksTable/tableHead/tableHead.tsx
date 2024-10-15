@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from '@/services/store'
 import { Typography } from '../../typography'
-import { setProperty } from '@/services/stateSlices/decksPageSlice'
+import { setProperty } from '@/services/decks/decksPageSlice'
 import s from './tableHead.module.scss'
 import { Icon } from '../../icon'
 

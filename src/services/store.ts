@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { flashcardsApi } from './flashcardsApi'
 import { useDispatch, useSelector } from 'react-redux'
-import { decksPageSlice } from './stateSlices/decksPageSlice'
+import { decksPageSlice } from './decks/decksPageSlice'
 
 export const store = configureStore({
   reducer: {

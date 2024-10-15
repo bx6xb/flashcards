@@ -5,7 +5,7 @@ import s from './decks.page.module.scss'
 import { Button } from '@/components/ui/button'
 import { Pagination, ItemsPerPage } from '@/components/ui/pagination'
 import { useAppDispatch, useAppSelector } from '@/services/store'
-import { setProperty } from '@/services/stateSlices/decksPageSlice'
+import { setProperty } from '@/services/decks/decksPageSlice'
 import { Filters } from './filters/filters'
 
 export function DecksPage() {
