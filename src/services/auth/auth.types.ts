@@ -7,3 +7,8 @@ export interface Me {
   created: string
   updated: string
 }
+export interface LoginQueryPayload {
+  password: string
+  email: string
+  rememberMe: boolean
+}

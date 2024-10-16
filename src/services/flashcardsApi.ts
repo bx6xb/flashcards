@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { DecksListResponse, DecksQueryParams } from './decks/decks.types'
-import { Me } from './auth/auth.types'
+import { LoginQueryPayload, Me } from './auth/auth.types'
 
 export const flashcardsApi = createApi({
   reducerPath: 'flashcardsApi',
@@ -15,6 +15,13 @@ export const flashcardsApi = createApi({
     me: builder.query<Me, void>({
       query: () => 'v1/auth/me',
     }),
+    login: builder.mutation<void, LoginQueryPayload>({
+      query: body => ({
+        url: 'v1/auth/login',
+        method: 'POST',
+        body,
+      }),
+    }),
     getDecks: builder.query<DecksListResponse, DecksQueryParams | void>({
       query: args => ({
         url: `v2/decks`,
@@ -24,4 +31,4 @@ export const flashcardsApi = createApi({
   }),
 })
 
-export const { useMeQuery, useGetDecksQuery } = flashcardsApi
+export const { useMeQuery, useLoginMutation, useGetDecksQuery } = flashcardsApi
