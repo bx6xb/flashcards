@@ -8,21 +8,25 @@ import { ControlledPasswordInput } from '@/components/ui/controlled/controlledPa
 import { ControlledEmailInput } from '@/components/ui/controlled/controlledEmailInput'
 import { Typography } from '@/components/ui/typography'
 import { Link } from 'react-router-dom'
+import { useLoginMutation } from '@/services/flashcardsApi'
+import { useAppDispatch } from '@/services/store'
+import { setAppProperty } from '@/services/app/appSlice'
 
 export type SignInFormValues = {
   email: string
   password: string
   rememberMe: boolean
 }
-type SignInProps = {
-  onSubmit: (data: SignInFormValues) => void
-}
 
-export const SignIn = ({ onSubmit }: SignInProps) => {
+export const SignIn = () => {
+  const dispatch = useAppDispatch()
+  const [signIn, { isLoading }] = useLoginMutation()
+
   const {
     control,
     handleSubmit,
     formState: { errors },
+    setError,
   } = useForm<SignInFormValues>({
     defaultValues: {
       email: '',
@@ -31,7 +35,17 @@ export const SignIn = ({ onSubmit }: SignInProps) => {
     },
   })
 
-  const onFormSubmit = handleSubmit(onSubmit)
+  const onFormSubmit = handleSubmit(async (formData: SignInFormValues) => {
+    try {
+      const response = await signIn(formData).unwrap()
+      console.log(response)
+    } catch (e) {
+      const message = e.data.message
+      setError('email', { message })
+      setError('password', { message })
+    }
+    // dispatch(setAppProperty({property: 'isUserAuthorized', }))
+  })
 
   return (
     <Card className={s.signIn}>

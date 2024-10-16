@@ -12,7 +12,7 @@ import { SignIn } from './components/auth/signIn'
 const publicRoutes: RouteObject[] = [
   {
     path: '/login',
-    element: <SignIn onSubmit={() => {}} />,
+    element: <SignIn />,
   },
 ]
 
